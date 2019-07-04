@@ -54,11 +54,15 @@ module Stockfish
       end)
     end
 
+    def raw_jq_filter
+      before_filters = self.class.before_fitlers_chain.map { |f| f.compile(@options) }.join("\n| ")
+      after_filters = self.class.after_filters_chain.map { |f| f.compile(@options) }.join("\n| ")
+      functions_filter.join("\n\n") + ([before_filters, map_filter, after_filters,
+        @additional_filters.join(' | ')].reject(&:empty?).join("\n| "))
+    end
+
     def jq_filter
-      before_filters = self.class.before_fitlers_chain.map { |f| f.compile(@options) }.join(' | ')
-      after_filters = self.class.after_filters_chain.map { |f| f.compile(@options) }.join(' | ')
-      functions_filter.join + ([before_filters, map_filter, after_filters,
-        @additional_filters.join(' | ')].reject(&:empty?).join(' | '))
+      raw_jq_filter.gsub("\n", ' ').squeeze(' ')
     end
 
     # Returns a command like { name: .path.to['$name'] }

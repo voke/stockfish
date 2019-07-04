@@ -3,7 +3,7 @@ module Stockfish
 
     attr_accessor :name, :body, :dependencies
 
-    def initialize(name, body, dependencies)
+    def initialize(name, body, dependencies = [])
       self.name = name.to_sym
       if self.name.eql?(:all)
         raise(ArgumentError, ':all is not valid function name')

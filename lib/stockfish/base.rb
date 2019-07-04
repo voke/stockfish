@@ -16,11 +16,6 @@ module Stockfish
       @additional_filters = additional_filters
     end
 
-    def self.identifier
-      name_without_namespace = name.split("::").last
-      name_without_namespace.gsub(/([^\^])([A-Z])/,'\1-\2').downcase.to_sym
-    end
-
     def self.before_filter(snippet = nil)
       before_filters.push(Stockfish::Filter.new(snippet ? snippet : yield))
     end

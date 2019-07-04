@@ -6,7 +6,9 @@ module Stockfish
     end
 
     def compile(subject)
-      gsub(/\{\{(\w*)\}\}/) { |match| subject[match[2..-3]] }
+      gsub(/\{\{([a-z0-9_.]+)\}\}/) do |match|
+        subject.dig(*match[2..-3].split('.'))
+      end
     end
 
   end

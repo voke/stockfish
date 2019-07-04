@@ -55,7 +55,7 @@ module Stockfish
     end
 
     def subject
-      { opts: @options }
+      @options
     end
 
     def raw_jq_filter

@@ -7,7 +7,7 @@ module Stockfish
     # used for mappings.
     depends_on :text
     define_function :text do
-      'def text: if type == "object" then .["$text"] else . end;'
+      'def text: if type == "object" then .["$text"] elif type == "array" then .[0] else . end;'
     end
 
     def initialize(custom_mappings: {}, options: {}, additional_filters: [])

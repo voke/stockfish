@@ -48,9 +48,9 @@ module Stockfish
     # Returns a command like { name: .path.to['$name'] }
     def to_filter
       inner = map do |name, path|
-        "#{name}: (#{path.to_filter})"
-      end.join(', ')
-      "{ #{inner } }"
+        "\s\s#{name}: (#{path.to_filter})"
+      end.join(",\n")
+      "{\n#{inner}\n}"
     end
 
   end

@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Gustav"]
   spec.email         = ["gustav@invoke.se"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Ruby library to map JSON documents using JQ filters}
+  spec.description   = %q{Ruby library to map JSON documents using JQ filters}
+  spec.homepage      = "https://github.com/voke/stockfish"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

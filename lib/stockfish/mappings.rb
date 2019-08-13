@@ -28,8 +28,7 @@ module Stockfish
       # it with double quotes like this: .["foo$"]
       # Ignore paths with whitespace or starts/ends with a period
       def serialize_path
-        keys = (path =~ /\s/) || path.end_with?('.') || path.start_with?('.') ?
-          [path] : path.split('.')
+        keys = index(/\s/) || end_with?('.') || start_with?('.') ? [self] : split('.')
         keys.map do |part|
           '["%s"]' % part
         end.join.insert(0, '.')

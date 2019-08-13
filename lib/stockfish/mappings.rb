@@ -36,7 +36,7 @@ module Stockfish
       end
 
       def to_filter
-        start_with?('.') ? self : simple_path
+        start_with?('.', '[') ? self : simple_path
       end
 
     end

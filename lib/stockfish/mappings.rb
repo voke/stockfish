@@ -26,8 +26,11 @@ module Stockfish
 
       # If the key contains special characters, you need to surround
       # it with double quotes like this: .["foo$"]
+      # Ignore paths with whitespace or starts/ends with a period
       def serialize_path
-        split('.').map do |part|
+        keys = (path =~ /\s/) || path.end_with?('.') || path.start_with?('.') ?
+          [path] : path.split('.')
+        keys.map do |part|
           '["%s"]' % part
         end.join.insert(0, '.')
       end
